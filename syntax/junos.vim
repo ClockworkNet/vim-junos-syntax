@@ -2,73 +2,91 @@
 " Language:     Junos Configuration
 " Maintainer:   Tim Zehta <tim@clockwork.net>
 " Last Change:  2013-01-25
-" Version:      1
+" Version:      2
 " URL:          https://github.com/ClockworkNet/vim-junos-syntax
 " Credits:      ...
-"
+
+
 " Quit when a syntax file was already loaded
 if exists("b:current_syntax")
     finish
 endif
 
+
 setlocal iskeyword+=-
+
 
 " Comments
 syn region junosComment start=#\V/*# end=#\V*/# oneline contains=junosURL
 syn match junosComment /^\s*##\s.*$/ contains=junosURL
 
+
 " Constants
-syn match junosConstant /\vany(;)@=/
-syn match junosConstant /\vcritical(;)@=/
-syn keyword junosConstant emergency
-syn keyword junosConstant error
-syn keyword junosConstant inet
-syn keyword junosConstant info
-syn match junosConstant /\vinteractive-commands( \{)@=/
+"   console type
+syn match junosConstant /\v(console type\s)@<=[a-z-]+(;)@=/
+"   class
+syn match junosConstant /\v(class\s)@<=[a-z-]+(;)@=/
+"   default applications
 syn match junosConstant /\vjunos-[a-z-]+/
-syn keyword junosConstant messages
-syn keyword junosConstant super-user
-syn keyword junosConstant syn-cookie
-syn keyword junosConstant xterm
+"   family
+syn match junosConstant /\v(family\s)@<=[a-z-]+(\s\{)@=/
+"   file
+syn match junosConstant /\v(file\s)@<=[a-z-]+(\s\{)@=/
+"   log levels (also matches policy constant 'any')
+syn match junosConstant /\valert|any|critical|emergency|error|info|none|notice|warning(;)@=/
+"   protocol
+syn match junosConstant /\v(protocol\s)@<=[a-z-]+(;)@=/
+"   syn-flood-protection-mode
+syn match junosConstant /\v(syn-flood-protection-mode\s)@<=[a-z-]+(;)@=/
+
 
 " Debug
-syn match junosHeader /^version 12.1R1.9;/
+syn match junosHeader /\v(version\s)@<=[0-9R.]+(;)@=/
+
 
 " Errors
 syn match junosError /## SECRET-DATA.*/
 
+
 " Functions
+syn match junosNumber /\v( \d+[ ;]| \d+\a[ ;])/ contained contains=junosSymbol
+"   bare functions
 syn match junosFunction /\v^\s*[a-z-]{3,}(;)@=/
-syn match junosFunction /\v^\s*[a-z-]{3,} (.+;)@=/
-syn keyword junosFunction files
-syn keyword junosFunction high
-syn keyword junosFunction low
-syn keyword junosFunction next-hop
-syn keyword junosFunction priority
-syn keyword junosFunction size
+"   function with a single value
+syn match junosFunction /\v^\s*[a-z-]{2,} (.+;)@=/ contains=junosFunction
+"   multi word functions containing IPs or numbers
+syn match junosFunction /\v^\s*([0-9a-z./-]+ ){3,}([0-9a-z./-]+)(;)@=/ contains=junosIP,junosNumber
+"   edge cases
+syn match junosFunction /console type/
+syn match junosFunction /from zone/
+syn match junosFunction /then accept/
 syn match junosFunction /to zone/
-syn keyword junosFunction type
-syn keyword junosFunction zone
+
 
 " IPs
-syn match junosCIDRsep #/# contained
-syn match junosIP /\v(\d{1,3}\.){3}\d{1,3}(\/\d{1,2})?/ contains=junosCIDRsep
+syn match JunosIpSep #/\|\.# contained
+syn match junosIP /\v(\d{1,3}\.){3}\d{1,3}(\/\d{1,2})?/ contains=JunosIpSep
+
 
 " Statements
 syn match junosStatement /\v^\s*[a-z-]+( \{$)@=/
 syn match junosStatement /\v^\s*[a-z-]+ (.+\{$)@=/
 syn keyword junosStatement to-zone
 
+
 " Strings
 syn region junosString start=#"# end=#"# skip=#\\\\\|\\"# oneline contains=junosVariable
 syn region junosString start=#'# end=#'# skip=#\\\\\|\\'# oneline contains=junosVariable
+
 
 " Symbols
 syn match junosSymbol /[{}]/
 syn match junosSymbol /\v\[|\]|;$/
 
+
 " URLs
 syn match junosURL #\vhttps?://[[:graph:]]+# contains=junosSymbol
+
 
 " Variables
 syn match junosVariable /\V<*>/
@@ -83,6 +101,8 @@ hi link junosError Error
 hi link junosFunction Function
 hi link junosHeader Debug
 hi link junosIP Label
+hi link junosIpSep Delimiter
+hi link junosNumber Normal
 hi link junosStatement Statement
 hi link junosString String
 hi link junosSymbol Delimiter
