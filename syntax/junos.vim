@@ -35,7 +35,7 @@ syn keyword junosConstant xterm
 syn match junosHeader /^version 12.1R1.9;/
 
 " Errors
-syn match junosError '## SECRET-DATA.*'
+syn match junosError /## SECRET-DATA.*/
 
 " Functions
 syn match junosFunction /\v^\s*[a-z-]{3,}(;)@=/
