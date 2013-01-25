@@ -3,6 +3,13 @@ vim-junos-syntax
 
 Vim syntax for Junos configuration files
 
++--------------------------------+---------------------------------+
+| .. image:: vim_conf_syntax.png | .. image:: vim_junos_syntax.png |
+|    :alt: conf syntax example   |    :alt: junos syntax example   |
++--------------------------------+---------------------------------+
+| conf syntax example            | junos syntax example            |
++--------------------------------+---------------------------------+
+
 
 Install
 =======
