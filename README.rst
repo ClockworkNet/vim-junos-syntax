@@ -3,12 +3,19 @@ vim-junos-syntax
 
 Vim syntax for Junos configuration files
 
-+--------------------------------+---------------------------------+
-| .. image:: vim_conf_syntax.png | .. image:: vim_junos_syntax.png |
-|    :alt: conf syntax example   |    :alt: junos syntax example   |
-+--------------------------------+---------------------------------+
-| conf syntax example            | junos syntax example            |
-+--------------------------------+---------------------------------+
++--------------------------+--------------------------+
+| conf syntax example      | |conf_syntax_png|        |
++--------------------------+--------------------------+
+| junos syntax example     | |junos_syntax_png|       |
+|                          |                          |
+|                          | color scheme is molokai_ |
++--------------------------+--------------------------+
+
+.. |conf_syntax_png| image:: http://github.com/ClockworkNet/vim-junos-syntax/raw/master/vim_conf_syntax.png
+   :alt: conf syntax example
+.. |junos_syntax_png| image:: http://github.com/ClockworkNet/vim-junos-syntax/raw/master/vim_junos_syntax.png
+   :alt: junos syntax example
+.. _molokai: https://github.com/tomasr/molokai
 
 
 Install
