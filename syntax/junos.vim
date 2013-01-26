@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:     Junos Configuration
 " Maintainer:   Tim Zehta <tim@clockwork.net>
-" Last Change:  2013-01-25
-" Version:      2
+" Last Change:  2013-01-26
+" Version:      3
 " URL:          https://github.com/ClockworkNet/vim-junos-syntax
 " Credits:      ...
 
