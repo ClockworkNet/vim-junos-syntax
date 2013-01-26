@@ -36,6 +36,8 @@ syn match junosConstant /\v(file\s)@<=[a-z-]+(\s\{)@=/
 syn match junosConstant /\valert|any|critical|emergency|error|info|none|notice|warning(;)@=/
 "   protocol
 syn match junosConstant /\v(protocol\s)@<=[a-z-]+(;)@=/
+"   static-nat
+syn match junosConstant /\v(static-nat\s)@<=[a-z-]+(;)@=/
 "   syn-flood-protection-mode
 syn match junosConstant /\v(syn-flood-protection-mode\s)@<=[a-z-]+(;)@=/
 
@@ -56,6 +58,8 @@ syn match junosFunction /\v^\s*[a-z-]{3,}(;)@=/
 syn match junosFunction /\v^\s*[a-z-]{2,} (.+;)@=/ contains=junosFunction
 "   multi word functions containing IPs or numbers
 syn match junosFunction /\v^\s*([0-9a-z./-]+ ){3,}([0-9a-z./-]+)(;)@=/ contains=junosIP,junosNumber
+"   static-nat subfunction
+syn match junosFunction /\v(static-nat\s)@<=[a-z-]+(\s[0-9./:]+;)@=/
 "   edge cases
 syn match junosFunction /console type/
 syn match junosFunction /from zone/
