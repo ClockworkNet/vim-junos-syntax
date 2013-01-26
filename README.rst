@@ -24,6 +24,15 @@ Install
 Put the ``junos.vim`` file in your ``~/.vim/syntax`` directory.
 
 
+Related
+=======
+
+Scott Ware maintains vim-slax_: syntax coloring of slax, xslt-style language,
+which is used for automation in Juniper Junos devices.
+
+.. _vim-slax: https://github.com/scottdware/vim-slax
+
+
 License
 =======
 
