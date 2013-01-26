@@ -21,7 +21,8 @@ Vim syntax for Junos configuration files
 Install
 =======
 
-Put the ``junos.vim`` file in your ``~/.vim/syntax`` directory.
+Copy or soft link the respective ``junos.vim`` files into your
+``~/.vim/syntax`` and ``~/.vim/ftdetect`` directories.
 
 
 Related
