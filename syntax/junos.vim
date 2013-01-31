@@ -18,7 +18,7 @@ setlocal iskeyword+=-
 
 " Comments
 syn region junosComment start=#\V/*# end=#\V*/# oneline contains=junosURL
-syn match junosComment /^\s*##\s.*$/ contains=junosURL
+syn match junosComment /^\s*##.*$/ contains=junosURL
 
 
 " Constants
