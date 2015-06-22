@@ -29,7 +29,7 @@ syn match junosConstant /\v(class\s)@<=[a-z-]+(;)@=/
 "   default applications
 syn match junosConstant /\vjunos-[a-z-]+/
 "   family
-syn match junosConstant /\v(family\s)@<=[a-z-]+(\s\{)@=/
+syn match junosConstant /\v(family\s)@<=[a-z-]+6?(\s\{)@=/
 "   file
 syn match junosConstant /\v(file\s)@<=[a-z-]+(\s\{)@=/
 "   log levels (also matches policy constant 'any')
