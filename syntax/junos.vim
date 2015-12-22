@@ -65,12 +65,19 @@ syn match junosFunction /console type/
 syn match junosFunction /from zone/
 syn match junosFunction /then accept/
 syn match junosFunction /to zone/
+syn match junosFunction /description/
 
 
 " IPs
 syn match JunosIpSep #/\|\.# contained
 syn match junosIP /\v(\d{1,3}\.){3}\d{1,3}(\/\d{1,2})?/ contains=JunosIpSep
 
+" IPv6
+syn match junosIP /\v(\x{1,4}:){1,7}:*(\x{1,4})?(\/\d+)?/ contains=JunosIpSep
+
+
+" Interfaces
+syn match junosInterface /\v(ge|xe)\-(\d+\/){2,3}\d+/
 
 " Statements
 syn match junosStatement /\v^\s*[a-z-]+( \{$)@=/
@@ -112,6 +119,7 @@ hi link junosString String
 hi link junosSymbol Delimiter
 hi link junosURL Underlined
 hi link junosVariable Identifier
+hi link junosInterface Label
 
 
 let b:current_syntax = "junos"
