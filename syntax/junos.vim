@@ -72,6 +72,10 @@ syn match junosFunction /description/
 syn match JunosIpSep #/\|\.# contained
 syn match junosIP /\v(\d{1,3}\.){3}\d{1,3}(\/\d{1,2})?/ contains=JunosIpSep
 
+" IPv6
+syn match junosIP /\v(\x{1,4}:){1,7}:*(\x{1,4})?(\/\d+)?/ contains=JunosIpSep
+
+
 " Interfaces
 syn match junosInterface /\v(ge|xe)\-(\d+\/){2,3}\d+/
 
